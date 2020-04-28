@@ -21,8 +21,7 @@ public class Server {
 	private final Bank localBank;
 
 	public static void main(String[] args) throws IOException {
-		int port = 1234;
-		Server vesysServer = new Server(port);
+		Server vesysServer = new Server(1234);
 		vesysServer.start();
 	}
 
