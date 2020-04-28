@@ -32,15 +32,6 @@ public class Server {
 
 	/**
 	 * Starts the Server with a given CommandHandler.
-	 * 
-	 * @see TcpHandler
-	 * @see UdpHandler
-	 * @see ServletHandler
-	 * @see HttpHandler
-	 * @see RestHandler
-	 * @see GraphQlHandler
-	 * 
-	 * @throws IOException
 	 */
 	public void start() throws IOException {
 		ExecutorService service = Executors.newCachedThreadPool();
@@ -49,5 +40,4 @@ public class Server {
 			service.execute(new TcpHandler(socket, localBank));
 		}
 	}
-
 }

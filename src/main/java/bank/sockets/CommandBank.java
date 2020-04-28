@@ -37,12 +37,13 @@ public class CommandBank implements Bank {
 		return response;
 	}
 
-	/**
-	 * ???
-	 */
 	@Override
 	public Account getAccount(String number) throws IOException {
-		return null;
+		if (writeRequest(new GetAccountCommand(number)).getResult()) {
+			return new AccountProxy(number);
+		} else {
+			return null; // siehe API Beschreibung
+		}
 	}
 
 	@Override
@@ -65,5 +66,50 @@ public class CommandBank implements Bank {
 			throws IOException, IllegalArgumentException, OverdrawException, InactiveException {
 		TransferCommand response = writeRequest(new TransferCommand(a.getNumber(), b.getNumber(), amount));
 		response.throwException();
+	}
+	
+	private class AccountProxy implements Account {
+		
+		private final String number; // als final deklarieren.
+
+		private AccountProxy(String number) {
+			this.number = number;
+		}
+
+		@Override
+		public double getBalance() throws IOException {
+			return writeRequest(new GetBalanceCommand(number)).getResult();
+		}
+
+		@Override
+		public String getOwner() throws IOException {
+			return writeRequest(new GetOwnerCommand(number)).getResult();
+		}
+
+		@Override
+		public String getNumber() {
+			return number;
+		}
+
+		@Override
+		public boolean isActive() throws IOException {
+			return writeRequest(new IsActiveCommand(number)).getResult();
+		}
+
+		@Override
+		public void deposit(double amount) throws InactiveException, IOException {
+			DepositCommand response = writeRequest(new DepositCommand(number, amount));
+			try {
+				response.throwException();
+			} catch (OverdrawException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		@Override
+		public void withdraw(double amount) throws IOException, InactiveException, OverdrawException {
+			WithdrawCommand response = writeRequest(new WithdrawCommand(number, amount));
+			response.throwException();
+		}
 	}
 }
