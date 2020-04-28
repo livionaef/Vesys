@@ -36,15 +36,7 @@ public class Driver implements BankDriver {
 
 		// Das BankProxy-Objekt ist Platzhalter auf Klientenseite f�r Server.
 		// Dieses Objekt muss die Anfragen an den Server weiterleiten.
-		bank = new BankProxy(); 
-//XXX				request -> {
-//			out.writeObject(request); out.flush();
-//			try {
-//				return (Command) in.readObject();
-//			} catch (ClassNotFoundException e) {
-//				throw new RuntimeException(e);
-//			}
-//		});
+		bank = new BankProxy();
 
 		System.out.println("connected to " + args[0] + ":" + args[1]);
 	}
@@ -102,21 +94,6 @@ public class Driver implements BankDriver {
 	public class BankProxy implements Bank {
 
 		// Keine Map auf Klientenseite!
-//XXX		private final CommandHandler handler;
-
-//		public BankProxy(CommandHandler h) {
-//			handler = h;
-//		}
-//		
-//		@SuppressWarnings("unchecked")
-//		<R extends Command> R writeRequest(R request) throws IOException {
-//			R response = (R) handler.handle(request);
-//			if (response.getException() != null) {
-//				Exception e = response.getException();
-//				if (e instanceof IOException) throw (IOException) e;
-//			}
-//			return response;
-//		}
 
 		/**
 		 * Problem: - send Request to Server over the ObjectOutputStream - read Response
