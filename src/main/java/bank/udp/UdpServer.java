@@ -11,8 +11,8 @@ import java.net.SocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 import bank.Bank;
+import bank.command.Command;
 import bank.local.Driver;
-import bank.sockets.Command;
 
 public class UdpServer {
 

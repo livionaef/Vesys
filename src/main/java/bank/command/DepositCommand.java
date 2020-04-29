@@ -1,7 +1,7 @@
 /**
  * 
  */
-package bank.sockets;
+package bank.command;
 
 import java.io.IOException;
 
@@ -10,30 +10,34 @@ import bank.Bank;
 
 /**
  * @author Livio Näf
+ *
  */
-public class WithdrawCommand extends Command {
+public class DepositCommand extends Command {
 
-	private static final long serialVersionUID = -3958321604810897616L;
+	private static final long serialVersionUID = 693892503696738027L;
 	private final String number;
 	private final double amount;
 
-	public WithdrawCommand(String number, double amount) {
+	public DepositCommand(String number, double amount) {
 		this.number = number;
 		this.amount = amount;
 	}
 
 	@Override
-	public Command execute(Bank b) {
+	public Command execute(Bank b) throws Exception {
 		try {
 			Account account = b.getAccount(number);
 			if (account != null) {
-				try { account.withdraw(amount); }
-				catch (Exception e) { setException(e); }
+				try {
+					account.deposit(amount);
+				} catch (Exception e) {
+					setException(e);
+				}
 				return this;
 
-			} else {
+			} else { // falls account == null
 				setException(new IllegalArgumentException());
-				return this; 
+				return this;
 			}
 
 		} catch (IOException e) { // should not happen

@@ -11,9 +11,9 @@ import java.net.InetSocketAddress;
 import java.net.SocketTimeoutException;
 import bank.Bank;
 import bank.BankDriver;
-import bank.sockets.Command;
-import bank.sockets.CommandBank;
-import bank.sockets.CommandBank.CommandHandler;
+import bank.command.Command;
+import bank.command.CommandBank;
+import bank.command.CommandBank.CommandHandler;
 
 /** Client side **/
 public class UdpDriver implements BankDriver {

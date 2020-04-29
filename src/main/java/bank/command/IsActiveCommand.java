@@ -1,7 +1,7 @@
 /**
  * 
  */
-package bank.sockets;
+package bank.command;
 
 import bank.Bank;
 

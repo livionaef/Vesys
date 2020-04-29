@@ -9,8 +9,8 @@ import java.net.Socket;
 import java.util.Arrays;
 import bank.Bank;
 import bank.BankDriver;
-import bank.sockets.Command;
-import bank.sockets.CommandBank;
+import bank.command.Command;
+import bank.command.CommandBank;
 
 /** Client side **/
 public class TcpDriver implements BankDriver {
