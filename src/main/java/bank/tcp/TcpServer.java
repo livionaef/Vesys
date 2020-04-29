@@ -1,4 +1,4 @@
-package bank.sockets;
+package bank.tcp;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,17 +15,17 @@ import bank.local.Driver;
  * 
  * @author Livio Näf
  */
-public class Server {
+public class TcpServer {
 
 	private final ServerSocket serverSocket;
 	private final Bank localBank;
 
 	public static void main(String[] args) throws IOException {
-		Server vesysServer = new Server(1234);
+		TcpServer vesysServer = new TcpServer(1234);
 		vesysServer.start();
 	}
 
-	public Server(int port) throws IOException {
+	public TcpServer(int port) throws IOException {
 		serverSocket = new ServerSocket(port);
 		localBank = new Driver.LocalBank();
 	}

@@ -1,4 +1,4 @@
-package bank.sockets;
+package bank.tcp;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -9,6 +9,8 @@ import java.net.Socket;
 import java.util.Arrays;
 import bank.Bank;
 import bank.BankDriver;
+import bank.sockets.Command;
+import bank.sockets.CommandBank;
 
 /** Client side **/
 public class TcpDriver implements BankDriver {

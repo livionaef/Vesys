@@ -1,4 +1,4 @@
-package bank.sockets;
+package bank.udp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,6 +11,8 @@ import java.net.InetSocketAddress;
 import java.net.SocketTimeoutException;
 import bank.Bank;
 import bank.BankDriver;
+import bank.sockets.Command;
+import bank.sockets.CommandBank;
 import bank.sockets.CommandBank.CommandHandler;
 
 /** Client side **/

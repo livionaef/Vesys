@@ -1,4 +1,4 @@
-package bank.sockets;
+package bank.udp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import bank.Bank;
 import bank.local.Driver;
+import bank.sockets.Command;
 
 public class UdpServer {
 
