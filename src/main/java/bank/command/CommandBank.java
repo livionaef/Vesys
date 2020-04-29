@@ -11,13 +11,14 @@ import bank.InactiveException;
 import bank.OverdrawException;
 
 /**
- * @author Livio Näf
+ * @author Livio NÃ¤f
  *
  */
 public class CommandBank implements Bank {
 
 	public interface CommandHandler {
-		public Command handle(Command request) throws IOException; // XXX das public wäre hier nicht nötig, denn in einem Interface sind per default ALLE Methoden public
+		// In einem Interface sind per default ALLE Methoden public
+		Command handle(Command request) throws IOException;
 	}
 
 	private final CommandHandler handler;
