@@ -80,7 +80,7 @@ public class UdpServer {
 		// WRITE TO OUT & SET DATA FOR PACKET & RETURN
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream out = new ObjectOutputStream(baos);
-		out.write(transactionId);
+		out.writeInt(transactionId);
 		// Send result for this transaction-id back to the client (could be an old one)
 		out.writeObject(command);
 		out.flush();
