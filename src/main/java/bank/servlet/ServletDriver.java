@@ -26,7 +26,7 @@ import bank.command.CommandBank.CommandHandler;
 public class ServletDriver implements BankDriver {
 
 	private Bank bank;
-	private String path;
+	private String path; // TODO: what is the path
 	private HttpClient httpClient = HttpClient.newHttpClient();
 
 	@Override
@@ -55,16 +55,14 @@ public class ServletDriver implements BankDriver {
 					.GET()
 					.build();
 		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new InternalError(e.getMessage());
 		}
 		// TODO: what Object is client?
 		HttpResponse<Stream<String>> response = null;
 		try {
 			response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofLines());
 		} catch (IOException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new InternalError(e.getMessage());
 		}
 		return response.body();
 	}
@@ -133,14 +131,16 @@ public class ServletDriver implements BankDriver {
 				httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofInputStream());
 			} catch (IOException | InterruptedException e1) {
 				// TODO correct exception?
-				throw new RuntimeException(e1);
+//				throw new RuntimeException(e1);
+				throw new InternalError(e1.getMessage());
 			}
 			ObjectInputStream in = new ObjectInputStream(httpResponse.body());
 			try {
 				return (Command) in.readObject();
 			} catch (ClassNotFoundException | IOException e2) {
 				// TODO correct exception?
-				throw new RuntimeException(e2);
+//				throw new RuntimeException(e2);
+				throw new InternalError(e2.getMessage());
 			}
 		}
 	}
@@ -151,7 +151,8 @@ public class ServletDriver implements BankDriver {
 			return java.net.URLEncoder.encode(url, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO: correct exception?
-			throw new RuntimeException(e);
+//			throw new RuntimeException(e);
+			throw new InternalError(e.getMessage());
 		}
 	}
 }

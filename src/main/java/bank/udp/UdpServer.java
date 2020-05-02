@@ -44,7 +44,7 @@ public class UdpServer {
 					serverSocket.receive(packet); // always same packet
 					serverSocket.send(handle(packet));
 				} catch (Exception e) {
-					e.printStackTrace();
+					throw new InternalError(e.getMessage());
 				}
 			}
 		}
