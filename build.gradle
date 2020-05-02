@@ -34,6 +34,9 @@ dependencies {
 }
 
 dependencies {
+	implementation 'org.apache.tomcat.embed:tomcat-embed-core:9.0.31'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.31'
+
     implementation 'junit:junit:4.12'
     compile ':bank-core:'
 }
