@@ -19,4 +19,5 @@ public class DefaultServlet extends AbstractBankServlet {
 		writer.write(getAccounts());
 		writer.write(getFooter());
 	}
+
 }
