@@ -6,11 +6,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bank.Bank;
 
 @WebServlet("/create")
 public class CreateServlet extends AbstractBankServlet {
 
 	private static final long serialVersionUID = -1187029657498000895L;
+
+	public CreateServlet(Bank bank) {
+		this.bank = bank;
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -19,11 +24,11 @@ public class CreateServlet extends AbstractBankServlet {
 		writer.write(getHeader("Create Account"));
 		writer.write("<form action=\"create\" method=\"post\"/><br/>");
 		writer.write("Owner:<br/><input type=\"text\" name=\"owner\"/><br/>");
-		writer.write("<input type=\"submit\" "+"name=\"submit\" value=\"Create\"/>");
+		writer.write("<input type=\"submit\" " + "name=\"submit\" value=\"Create\"/>");
 		writer.write("</form>");
 		writer.write(getFooter());
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String owner = request.getParameter("owner");

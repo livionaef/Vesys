@@ -5,11 +5,16 @@ import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import bank.Bank;
 
 @WebServlet("/transfer")
 public class TransferServlet extends AbstractBankServlet {
 
 	private static final long serialVersionUID = -1187029657498000895L;
+
+	public TransferServlet(Bank bank) {
+		this.bank = bank;
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
