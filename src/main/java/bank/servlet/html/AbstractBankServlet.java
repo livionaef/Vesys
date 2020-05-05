@@ -2,18 +2,16 @@ package bank.servlet.html;
 
 import java.io.IOException;
 import java.util.Set;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-
 import bank.Account;
 import bank.Bank;
 import bank.local.Driver;
 
 public abstract class AbstractBankServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-
 	protected Bank bank;
 	private ServletContext context;
 
@@ -45,7 +43,7 @@ public abstract class AbstractBankServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<hr/>\n");
 		sb.append("<h2>Accounts:</h2>");
-		sb.append("<table><tr><td><b>AccountNr</b></td><td><b>Owner</b></td><td><b>Balance</b></td><td></td></tr>");
+		sb.append("<table> <tr> <td><b>AccountNr</b></td> <td><b>Owner</b></td> <td><b>Balance</b></td> <td></td> </tr>");
 		Set<String> accnumbers = bank.getAccountNumbers();
 		for (String accnumber : accnumbers) {
 			Account account = bank.getAccount(accnumber);
@@ -62,6 +60,4 @@ public abstract class AbstractBankServlet extends HttpServlet {
 		sb.append("</table>");
 		return sb.toString();
 	}
-
-
 }
