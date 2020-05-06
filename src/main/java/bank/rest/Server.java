@@ -10,7 +10,8 @@ public class Server {
 	public static void main(String[] args) throws Exception {
 		URI baseUri = new URI("http://localhost:1234/rest-bank/");
 		
-		ResourceConfig rc = new ResourceConfig().packages("bank.rest"); 
+		ResourceConfig rc = new ResourceConfig().packages("bank.rest");
+//	    ResourceConfig rc = new ResourceConfig(BankResource.class);
 		
 		// Create and start the JDK HttpServerwith the Jersey application
 		System.out.println("Starting HttpServer...");

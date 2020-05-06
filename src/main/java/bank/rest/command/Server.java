@@ -29,6 +29,7 @@ public class Server {
 
 		// @Singleton annotations will be respected 
 	    ResourceConfig rc = new ResourceConfig(BankResource.class);
+//		ResourceConfig rc = new ResourceConfig().packages("bank.rest.command");
 
 		// Create and start the JDK HttpServer with the Jersey application
 		JdkHttpServerFactory.createHttpServer(baseUri, rc);

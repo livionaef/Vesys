@@ -29,7 +29,7 @@ import bank.OverdrawException;
 import bank.local.Driver;
 
 @Singleton
-@Path("accounts")
+@Path("/accounts")
 public class BankResource {
 
 	private final Bank bank;

@@ -8,3 +8,4 @@ bank.servlet.ServletDriver localhost 1234 /servlet-bank
 
 bank.rest.command.RestDriver http://localhost:1234/rest-command
 
+bank.rest.RestDriver http://localhost:1234/rest-bank/accounts
