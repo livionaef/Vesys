@@ -5,3 +5,6 @@ bank.tcp.TcpDriver localhost 1234
 bank.udp.UdpDriver localhost 1234
 
 bank.servlet.ServletDriver localhost 1234 /servlet-bank
+
+bank.rest.command.RestDriver http://localhost:1234/rest-command
+

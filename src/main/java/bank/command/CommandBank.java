@@ -69,11 +69,11 @@ public class CommandBank implements Bank {
 		response.throwException();
 	}
 	
-	public class AccountProxy implements Account {
+	private class AccountProxy implements Account {
 		
 		private final String number; // als final deklarieren.
 
-		protected AccountProxy(String number) {
+		private AccountProxy(String number) {
 			this.number = number;
 		}
 

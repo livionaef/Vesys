@@ -1,0 +1,20 @@
+REST Bank - Design of the resources:
+
+/bank/accounts
+	GET				list all accounts				getAccountNumbers()
+	
+	POST			create a new account			createAccount()
+			201=created, 400=error
+		
+/bank/accounts/{id}
+	GET				get account details				getBalance() / getOwner()
+			200=ok, 404=does not exist
+		
+	HEAD			is account active				isActive()
+			200=ok, 404=does not exist, 410=passive
+		
+	PUT				change balance					deposit() / withdraw()
+			performed under optimistic locking (-> ETag)
+		
+	DELETE			remove account					removeAccount()
+			200=ok, 406=could not be closed
