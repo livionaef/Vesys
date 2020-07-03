@@ -25,7 +25,7 @@ public class WsServer {
 	// For each session a new instance is created -> bank & sessions are static
 	// and initialised inside the main method.
 	// But when having a WsConfig class static is no longer needed.
-	private final Bank bank = new WsBankImpl(new Driver.LocalBank(), id -> notifyListeners(id));
+	private final Bank bank = new BankImpl(new Driver.LocalBank(), id -> notifyListeners(id));
 	private final List<Session> sessions = new CopyOnWriteArrayList<>();
 
 	public static void main(String[] args) throws Exception {
@@ -68,12 +68,12 @@ public class WsServer {
 		sessions.remove(session);
 	}
 
-	static class WsBankImpl implements Bank {
+	public static class BankImpl implements Bank {
 
 		private final Bank bank;
 		private final UpdateHandler handler;
 
-		public WsBankImpl(Bank bank, UpdateHandler handler) {
+		public BankImpl(Bank bank, UpdateHandler handler) {
 			this.bank = bank;
 			this.handler = handler;
 		}

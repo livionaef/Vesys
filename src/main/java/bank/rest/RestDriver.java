@@ -79,6 +79,7 @@ public class RestDriver implements BankDriver {
 			}
 		}
 
+		@SuppressWarnings("unused")
 		private class RestAccount implements Account {
 			
 			private final String number;

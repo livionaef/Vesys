@@ -2,11 +2,14 @@ plugins {
     id 'java'
     id 'application'
     id 'idea'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
 repositories {
     jcenter()
     flatDir { dirs 'lib' }
+    mavenCentral()
 }
 
 mainClassName = 'bank.BankLauncher'
@@ -68,6 +71,21 @@ dependencies {
 
 	// Spark Java
 	implementation 'com.sparkjava:spark-core:2.9.1'
+	
+	// GraphQl
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:7.0.1'
+	implementation 'com.graphql-java-kickstart:graphql-java-tools:6.0.2'
+	runtime 'com.graphql-java-kickstart:graphiql-spring-boot-starter:7.0.1'
+	runtime 'com.graphql-java-kickstart:voyager-spring-boot-starter:7.0.1'
+	runtime 'com.graphql-java-kickstart:altair-spring-boot-starter:7.0.1'
+	implementation 'com.google.code.gson:gson:2.8.6'
+	
+	// Rabbit MQ
+	implementation 'com.rabbitmq:amqp-client:5.9.0'
+	
+	// Akka
+	implementation 'com.typesafe.akka:akka-remote_2.13:2.6.5'
 }
 
 idea.module.outputDir file("out/production/classes")

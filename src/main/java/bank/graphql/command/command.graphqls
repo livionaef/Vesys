@@ -1,0 +1,31 @@
+type Account {
+	number: ID!			# String! would be a variant
+	owner: String!
+	active: Boolean!
+	balance: Float!
+}
+
+enum Result {
+	OK
+	INACTIVE
+	OVERDRAW
+	ILLEGAL
+}
+
+type Query {
+	accounts: [Account!]!
+	account(number: ID!): Account
+}
+
+type Mutation {
+	createAccount(owner: String!): Account		# andere variante: return String
+	closeAccount(number: ID!): Boolean!
+	deposit(number: ID!, amount: Float!): Boolean
+	withdraw(number: ID!, amount: Float!): Boolean
+	transfer(from: ID!, to: ID!, amount: Float!): Result!
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}
