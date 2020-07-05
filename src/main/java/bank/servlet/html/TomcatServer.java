@@ -23,29 +23,11 @@ public class TomcatServer {
 		String urlPattern = "/*";
 		Context context = tomcat.addContext(contextPath, new File(".").getAbsolutePath());
 
-		String servletName = "CreateServlet";
-		Tomcat.addServlet(context, servletName, new CreateServlet(bank));
-		context.addServletMappingDecoded(urlPattern, servletName);
-		
-		servletName = "DepositServlet";
-		Tomcat.addServlet(context, servletName, new DepositServlet(bank));
-		context.addServletMappingDecoded(urlPattern, servletName);
-		
-		servletName = "WithdrawServlet";
-		Tomcat.addServlet(context, servletName, new WithdrawServlet(bank));
-		context.addServletMappingDecoded(urlPattern, servletName);
-		
-		servletName = "TransferServlet";
-		Tomcat.addServlet(context, servletName, new TransferServlet(bank));
-		context.addServletMappingDecoded(urlPattern, servletName);
-		
-		servletName = "CloseServlet";
-		Tomcat.addServlet(context, servletName, new CloseServlet(bank));
-		context.addServletMappingDecoded(urlPattern, servletName);
-
-		servletName = "DefaultServlet";
-		Tomcat.addServlet(context, servletName, new DefaultServlet(bank));
-		context.addServletMappingDecoded(urlPattern, servletName);
+		String[] servletNames = { "CreateServlet", "DepositServlet", "WithdrawServlet", "TransferServlet", "CloseServlet", "DefaultServlet" };
+		for (String servletName : servletNames) {
+			Tomcat.addServlet(context, servletName, new CreateServlet(bank));
+			context.addServletMappingDecoded(urlPattern, servletName);
+		}
 
 		tomcat.getConnector(); // creates the default connector
 		tomcat.start();

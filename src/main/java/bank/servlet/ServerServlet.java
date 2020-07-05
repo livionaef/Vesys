@@ -23,7 +23,7 @@ public class ServerServlet extends HttpServlet {
 	}
 	
 	/**
-	 * Diese Methode braucht es so. Da wird die lokale Bank erzeugt. 
+	 * Diese Methode braucht es so. Da wird die lokale Bank erzeugt.
 	 */
 	@Override
 	public void init() throws ServletException {
@@ -44,7 +44,7 @@ public class ServerServlet extends HttpServlet {
 		out.close();
 	}
 	/**
-	 * Command-Object Variante 
+	 * Command-Object Variante
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -54,7 +54,7 @@ public class ServerServlet extends HttpServlet {
 			// Receive Command object
 			Command command = (Command) in.readObject();
 			// Execute the Command 
-			command.execute(bank);
+			command = command.execute(bank);
 			// Write Command to out
 			out.writeObject(command);
 			out.flush();
