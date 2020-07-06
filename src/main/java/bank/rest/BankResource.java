@@ -120,10 +120,8 @@ public class BankResource {
 			} catch (OverdrawException e) { 		// 403
 				throw new WebApplicationException(e, Response.Status.FORBIDDEN);
 			}
-			return Response.ok(new AccountDto(a)).tag(eTag).build();
 		}
-		// TODO: what is returned here?
-		return null;
+		return Response.ok(new AccountDto(a)).tag(eTag).build();
 	}
 	
 	@DELETE

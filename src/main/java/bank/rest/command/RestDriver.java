@@ -50,13 +50,11 @@ public class RestDriver implements BankDriver {
 		@Override
 		public Command handle(Command request) throws IOException {
 			try {
-				// TODO: delete unused!
 //				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 //				ObjectOutputStream out = new ObjectOutputStream(baos);
 //				out.writeObject(request);
 //				out.close();
 				Entity<Command> entity = Entity.entity(request, MediaType.APPLICATION_OCTET_STREAM);
-				// TODO: what is target?
 				Response response = target.request().post(entity);
 				return response.readEntity(Command.class);
 //				InputStream inputStream = response.readEntity(InputStream.class);
